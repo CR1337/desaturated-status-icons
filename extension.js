@@ -6,36 +6,38 @@ class Extension {
     }
 
     enable() {
-        this._desaturate_effect = new Clutter.DesaturateEffect();
         this._actor_added_signal_id = Main.panel._rightBox.connect(
             'actor-added', this._actor_added_event_handler
         )
-        this._desaturate_all_icons();
+        this._add_effects();
     }
 
     disable() {
         Main.panel._rightBox.disconnect(this._actor_added_signal_id);
-        this._remove_effect();
-        this._desaturate_effect = null;
+        this._remove_effects();
     }
 
-    _actor_added_event_handler(box, actor) {
-        actor.add_effect(this._desaturate_effect);
+    _actor_added_event_handler(_, actor) {
+        actor.add_effect(new Clutter.DesaturateEffect());
     }
 
     _get_tray() {
         return Main.panel._rightBox.get_children().slice(0, -1);
     }
 
-    _desaturate_all_icons() {
-        for (const actor of this._get_tray()) {
-            actor.add_effect(this._desaturate_effect);
+    _add_effects() {
+        for (let actor of this._get_tray()) {
+            actor.add_effect(new Clutter.DesaturateEffect());
         }
     }
 
-    _remove_effect() {
-        for (const actor of this._get_tray()) {
-            actor._remove_effect(this._desaturate_effect);
+    _remove_effects() {
+        for (let actor of this._get_tray()) {
+            for (let effect of actor.get_effects()) {
+                if (effect instanceof Clutter.DesaturateEffect) {
+                    actor.remove_effect(effect);
+                }
+            }
         }
     }
 }
