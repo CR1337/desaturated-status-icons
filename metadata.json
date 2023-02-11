@@ -1,0 +1,8 @@
+{
+  "name": "Desaturated Status Icons",
+  "description": "Display all status icons in grayscale",
+  "uuid": "desaturated-status-icons@cr1337.github.com",
+  "shell-version": [
+    "42"
+  ]
+}
