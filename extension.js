@@ -22,7 +22,7 @@ class Extension {
     }
 
     _get_tray() {
-        return Main.panel._rightBox.get_children().slice(0, -1);
+        return Main.panel._rightBox.get_children();
     }
 
     _add_effects() {
