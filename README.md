@@ -1,6 +1,6 @@
 # Desaturated Tray Icons
 
-This GNOME Shell Extension desaturates the Tray Icons.
+This [GNOME Shell Extension](https://extensions.gnome.org/extension/5766/desaturated-tray-icons/) desaturates the Tray Icons.
 
 Enabled Extension:<br>
 <img src="assets/enabled.png" alt="Image showing enabled extension" width="50%" title="Enabled Extension">
