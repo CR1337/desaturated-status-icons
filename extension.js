@@ -1,5 +1,5 @@
-const { Clutter } = imports.gi;
-const Main = imports.ui.main;
+import Clutter from 'gi://Clutter';
+import * as Main from 'resource:///org/gnome/shell/ui/main.js';
 
 class Extension {
     constructor() {
