@@ -6,19 +6,19 @@ export default class Extension {
     }
 
     enable() {
-        this._actor_added_signal_id = Main.panel._rightBox.connect(
-            'actor-added', this._actor_added_event_handler
+        this._child_added_signal_id = Main.panel._rightBox.connect(
+            'child-added', this._child_added_event_handler
         )
         this._add_effects();
     }
 
     disable() {
-        Main.panel._rightBox.disconnect(this._actor_added_signal_id);
+        Main.panel._rightBox.disconnect(this._child_added_signal_id);
         this._remove_effects();
     }
 
-    _actor_added_event_handler(_, actor) {
-        actor.add_effect(new Clutter.DesaturateEffect());
+    _child_added_event_handler(_, child) {
+        child.add_effect(new Clutter.DesaturateEffect());
     }
 
     _get_tray() {
@@ -26,16 +26,16 @@ export default class Extension {
     }
 
     _add_effects() {
-        for (let actor of this._get_tray()) {
-            actor.add_effect(new Clutter.DesaturateEffect());
+        for (let child of this._get_tray()) {
+            child.add_effect(new Clutter.DesaturateEffect());
         }
     }
 
     _remove_effects() {
-        for (let actor of this._get_tray()) {
-            for (let effect of actor.get_effects()) {
+        for (let child of this._get_tray()) {
+            for (let effect of child.get_effects()) {
                 if (effect instanceof Clutter.DesaturateEffect) {
-                    actor.remove_effect(effect);
+                    child.remove_effect(effect);
                 }
             }
         }
