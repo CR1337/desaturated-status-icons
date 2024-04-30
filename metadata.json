@@ -2,7 +2,7 @@
   "name": "Desaturated Tray Icons",
   "uuid": "desaturated-tray-icons@cr1337.github.com",
   "description": "Display all tray icons in grayscale",
-  "version": 3,
+  "version": 4,
   "shell-version": [
     "46"
   ],
